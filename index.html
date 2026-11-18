@@ -71,6 +71,15 @@ td:last-child{text-align:right;font-weight:700}
 .lgs i{position:absolute;left:0;top:5px;width:26px;height:26px;z-index:2;opacity:0;pointer-events:none}
 .lgs svg{display:block;width:100%;height:100%;fill:#fff;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
 .lgs[data-l="en"] b{transform:translateX(37px)}
+#sw2{position:absolute;top:1px;right:0;z-index:3;padding:1px 12px;font-size:1rem;border-radius:14px;line-height:1.4;background:transparent}
+#lp{position:relative}
+#lp label{margin:8px 0 3px}
+#lp input,#lp textarea{padding:7px 9px}
+#lp textarea{min-height:88px}
+#lp .row{gap:8px}
+#lp .nr{margin-top:3px}
+#lp .btns{margin-top:12px}
+#lp h2{margin-bottom:8px}
 @media print{.lgs{display:none}}
 .nr{display:flex;align-items:center;gap:6px;margin:6px 0 0;font-size:.72rem;cursor:pointer}
 .nr input{width:auto;margin:0}
@@ -113,12 +122,19 @@ input:disabled{opacity:.5}
 #vinv{display:none}
 body.v2 #vin{display:none}
 body.v2 #vinv{display:block}
-#vw{overflow:auto}
+#vw{overflow:auto;position:relative}
+#vw,#out,#lp textarea{scrollbar-width:thin;scrollbar-color:rgba(120,140,160,.4) transparent}
+#vw::-webkit-scrollbar,#out::-webkit-scrollbar,#lp textarea::-webkit-scrollbar{width:5px;height:5px}
+#vw::-webkit-scrollbar-thumb,#out::-webkit-scrollbar-thumb,#lp textarea::-webkit-scrollbar-thumb{background:rgba(120,140,160,.4);border-radius:5px}
+#vw::-webkit-scrollbar-track,#out::-webkit-scrollbar-track,#lp textarea::-webkit-scrollbar-track{background:transparent}
 #lp{transform-origin:50% 50%}
 .bkpick .bkb{width:58px;padding:5px 2px}
 #out{display:flex;flex-direction:column}
 #tk{flex:1 1 auto}
 #prow{margin-top:auto;padding-top:12px;text-align:right}
+#invf{display:none!important}
+.grp{font-weight:700}
+.bkr{flex-wrap:wrap}
 #invf{border-bottom:1px solid var(--line);margin-bottom:12px;padding-bottom:12px}
 #v1.on{background:var(--brand);color:#fff}
 .v2only{display:none}
@@ -132,6 +148,84 @@ body.v2 .btns .v2only{display:inline-block}
 @media print{.tg,.lgs,#fx,.v2only{display:none!important}}
 @media print{.tg{display:none}}
 @media print{body{background:#fff}.panel,h1{display:none}.wrap{display:block;padding:0}.ticket{border:0}}
+.invpg .page{width: 210mm; height: 297mm; margin: 0 auto 12px auto; padding: 12mm 15mm 10mm 15mm; background-color: #ffffff; border: 1px solid rgba(0, 0, 0, 0.12); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;}
+.invpg .page-content{flex: 1 1 0; min-height: 0; overflow: hidden;}
+.invpg .page-content > * + *{margin-top: 8px;}
+.invpg .page-content > :is(h1,.invpg h2,.invpg h3,.invpg h4) + *{margin-top: 3px;}
+.invpg .page-footer{flex-shrink: 0; margin-top: auto; padding-top: 3mm; display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; color: #64748b; border-top: 1px solid #e2e8f0;}
+.invpg /* Watermark Background */
+        .top-section-wrapper{position: relative; overflow: visible;}
+.invpg .watermark-bg{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-5deg); font-family: 'Montserrat', sans-serif; font-size: 85pt; font-weight: 900; color: rgba(15, 41, 66, 0.05); letter-spacing: 8px; pointer-events: none; user-select: none; z-index: 0; white-space: nowrap; text-align: center; width: 100%;}
+.invpg .header-container,.invpg .info-grid{position: relative; z-index: 1;}
+.invpg /* Header / Logo Space */
+        .header-container{display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0f2942; padding-bottom: 8px; margin-bottom: 8px; min-height: 50px;}
+.invpg .logo-area{display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 150px; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 4px 12px; color: #94a3b8; font-size: 8.5pt; background-color: rgba(248, 250, 252, 0.7);}
+.invpg .doc-title{font-size: 22pt; font-weight: 700; color: #0f2942; letter-spacing: 2px; font-family: 'Playfair Display', Georgia, serif; margin: 0; line-height: 1;}
+.invpg /* Info Grid Cards */
+        .info-grid{display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 10px;}
+.invpg .info-card{background-color: transparent; border: 1px solid #e2e8f0; border-radius: 5px; padding: 5px 8px; font-size: 8.5pt;}
+.invpg .card-heading{font-size: 7.8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #1d4ed8; margin-bottom: 3px; border-bottom: 1px solid #cbd5e1; padding-bottom: 2px;}
+.invpg .info-table{width: 100%; border-collapse: collapse;}
+.invpg .info-table td{padding: 1.5px 0; vertical-align: top;}
+.invpg .info-table td.label{color: #64748b; width: 58px; font-weight: 500;}
+.invpg .info-table td.val{color: #0f2942; font-weight: 600;}
+.invpg /* Flight Table */
+        .section-header-flex{display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;}
+.invpg .section-title{font-size: 9.5pt; font-weight: 700; color: #0f2942; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0;}
+.invpg .doc-meta{font-size: 8pt; color: #64748b;}
+.invpg .doc-meta span{font-weight: 700; color: #0f2942;}
+.invpg .data-table{width: 100%; border-collapse: collapse; font-size: 8.8pt; background-color: #ffffff;}
+.invpg .data-table th{background-color: #0f2942; color: #ffffff; font-weight: 600; text-align: left; padding: 5px 8px; font-size: 8pt;}
+.invpg .data-table th:first-child{border-top-left-radius: 4px;}
+.invpg .data-table th:last-child{border-top-right-radius: 4px;}
+.invpg .data-table td{padding: 5.5px 8px; border-bottom: 1px solid #e2e8f0; color: #334155;}
+.invpg .badge-status{background-color: #dcfce7; color: #15803d; font-weight: 700; padding: 1.5px 5px; border-radius: 4px; font-size: 7.5pt;}
+.invpg /* Passengers Box */
+        .summary-container{display: flex; flex-direction: column; gap: 6px;}
+.invpg .passenger-card{border: 1px solid #cbd5e1; border-radius: 5px; padding: 5px 8px; background-color: #ffffff;}
+.invpg .passenger-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px;}
+.invpg .pax-row{display: flex; justify-content: space-between; align-items: center; padding: 2px 4px; border-bottom: 1px dashed #f1f5f9; font-size: 8pt;}
+.invpg .pax-name{font-weight: 700; color: #0f2942; white-space: nowrap; font-size: 8pt;}
+.invpg .pax-fare{font-weight: 700; color: #1e293b; font-size: 8pt; margin-left: 4px;}
+.invpg .total-section-row{display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 8px; align-items: stretch;}
+.invpg .deadline-box-prominent{background-color: #fff1f2; border: 1.5px solid #f43f5e; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; gap: 8px; color: #9f1239;}
+.invpg .deadline-icon{font-size: 14pt; line-height: 1;}
+.invpg .deadline-text-group{display: flex; flex-direction: column;}
+.invpg .deadline-label{font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #be123c;}
+.invpg .deadline-value{font-size: 10pt; font-weight: 800; color: #881337;}
+.invpg .total-box{background-color: #0f2942; color: #ffffff; border-radius: 6px; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center;}
+.invpg .total-label{font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.5px; color: #cbd5e1; font-weight: 600;}
+.invpg .total-amount{font-size: 15pt; font-weight: 800; color: #ffffff;}
+.invpg /* Terms & Banking */
+        .dual-columns{display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 6px;}
+.invpg .box-panel{border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; background-color: #ffffff; font-size: 8pt;}
+.invpg .box-panel-title{font-weight: 700; color: #0f2942; margin-bottom: 4px; font-size: 8.5pt;}
+.invpg .term-list{margin: 0; padding-left: 12px; color: #475569;}
+.invpg .term-list li{margin-bottom: 2px;}
+.invpg .bank-details p{margin: 2px 0; color: #334155;}
+.invpg .bank-details strong{color: #0f2942;}
+.invpg /* Sign & Stamp Section */
+        .auth-section{display: flex; justify-content: space-between; align-items: flex-end; padding: 6px 14px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; position: relative; margin-top: 6px; margin-bottom: 6px;}
+.invpg .sig-block-left{font-size: 8.5pt; color: #334155; display: flex; align-items: center; padding-bottom: 2px;}
+.invpg .sig-block-right{font-size: 8pt; color: #94a3b8; position: relative; width: 220px;}
+.invpg .sig-line{margin-top: 14px; border-bottom: 1px dashed #cbd5e1; width: 100%;}
+.invpg .sig-title{font-size: 7.5pt; color: #cbd5e1; margin-top: 3px; text-align: center;}
+.invpg .thank-you-bar{text-align: center; padding: 5px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; color: #1e40af; font-weight: 600; font-size: 8pt; letter-spacing: 0.5px;}
+.invpg{width:210mm;font-family:'Roboto',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#1e293b;line-height:normal}
+.invpg .page{margin:0}
+.invpg table{margin:0}
+.invpg td,.invpg th{border:0;padding:0;text-align:left;font-weight:inherit}
+.invpg td:last-child{text-align:inherit;font-weight:inherit}
+.invpg .info-table td{padding:1.5px 0}
+.invpg .data-table th{padding:5px 8px;font-weight:600}
+.invpg .data-table td{padding:5.5px 8px;border-bottom:1px solid #e2e8f0}
+.invpg .doc-title{padding:0!important;font-size:22pt}
+.invpg h1,.invpg h2{margin:0}
+.invpg .bk-sep{border:0;border-top:1px dashed #cbd5e1;margin:4px 0}
+.invpg ul{margin:0}
+.invwrap{overflow:hidden}
+@page{size:210mm 297mm;margin:0}
+@media print{.invwrap{height:auto!important;overflow:visible!important}.invpg{transform:none!important;margin:0!important}.wrap{display:block}#out{padding:0!important;border:0!important;height:auto!important;overflow:visible!important;background:#fff!important}#invf,#prow,.wrap>footer{display:none!important}}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -141,7 +235,7 @@ body.v2 .btns .v2only{display:inline-block}
 <main class="wrap">
 <h1 data-i="h1">✈️ Нислэгийн мэдээлэл ба журам</h1>
 
-<section class="panel" id="lp"><div id="lpi"><div id="vw"><div id="vin"><h2 data-i="inputH">Мэдээлэл оруулах</h2>
+<section class="panel" id="lp"><div id="lpi"><div id="vw"><button class="alt" id="sw2" type="button" aria-label="Мэдээлэл оруулах / Нэхэмжлэх" title="Мэдээлэл оруулах / Нэхэмжлэх">⇄</button><div id="vin"><h2 data-i="inputH">Мэдээлэл оруулах</h2>
 <label for="name" data-i="lName">Зорчигчийн нэр</label>
 <input id="name" placeholder="Жишээ: BAT/BAYAR MR">
 <label for="pnr" data-i="lPnr">Amadeus PNR хуулах</label>
@@ -156,7 +250,7 @@ body.v2 .btns .v2only{display:inline-block}
 </div>
 <div class="sub" data-i="hint" style="margin-top:10px">Мөнгөн тэмдэгтгүй тоо бол $ гэж үзнэ. Өөр валют бол код хамт бичнэ, жишээ нь 10000 KRW.</div>
 <div class="err" id="err" role="alert"></div>
-</div><div id="vinv"><h2 data-i="v2t">Нэхэмжлэх</h2><div class="row"><div><label data-i="inv" for="inv">Нэхэмжлэхийн дугаар</label><input id="inv" autocomplete="off"></div><div><label data-i="tl" for="tl">Хасагдах хугацаа</label><input id="tl" type="date"></div></div><label data-i="bk">Банкны данс</label><div class="sub" data-i="bkh">Банкны лого дээр дарж данс нэмнэ</div><div id="bkpick" class="bkpick"></div><div id="bklist"></div></div></div>
+</div><div id="vinv"><h2>INV</h2><div class="row"><div><label data-i="inv" for="inv">Нэхэмжлэхийн дугаар</label><input id="inv" autocomplete="off"></div><div><label data-i="tl" for="tl">Хасагдах хугацаа</label><input id="tl" type="date"></div></div><div class="row"><div><label data-i="tt" for="tt">Цаг</label><input id="tt" type="time"></div><div><label data-i="logo" for="lg2">Лого</label><input id="lg2" type="file" accept="image/*"></div></div><div class="row"><div><label data-i="of" for="of">Оффис</label><input id="of" autocomplete="off"></div><div><label data-i="ad" for="ad">Хаяг</label><input id="ad" autocomplete="off"></div></div><div class="row"><div><label data-i="agn" for="ag">Агент</label><input id="ag" autocomplete="off"></div><div><label data-i="ph" for="ph">Утас</label><input id="ph" autocomplete="off"></div></div><div class="row"><div><label data-i="ce" for="ce">Гар утас</label><input id="ce" autocomplete="off"></div><div><label data-i="em" for="em">И-мэйл</label><input id="em" autocomplete="off"></div></div><label data-i="bf" for="bf">Хүлээн авагч</label><input id="bf" autocomplete="off"><label data-i="bk">Банкны данс</label><div class="sub" data-i="bkh">Банкны лого дээр дарж данс нэмнэ</div><div id="bkpick" class="bkpick"></div><div id="bklist"></div></div></div>
 <div class="btns">
 <button id="copy" data-i="copy">✂️ Snip</button>
 <button class="alt" id="v1" type="button">INV</button>
@@ -7254,8 +7348,8 @@ function parse(text){
   var segs=[],bad=[];
   text.split(/\n/).forEach(function(l){
     l=l.trim().toUpperCase();if(!l)return;
-    var m=l.match(/^(?:\d+\s+)?([A-Z0-9]{2})\s*(\d{1,4})\s+([A-Z])\s+(\d{1,2})([A-Z]{3})(\d{2})?\s+(?:\d\*?\s*)?([A-Z]{3})([A-Z]{3})\s+([A-Z]{2})(\d+)(?:\s+(\d{4})\s+(\d{4}))?/);
-    if(m)segs.push({al:m[1],no:m[2],cls:m[3],d:m[4],mo:m[5],yr:m[6],from:m[7],to:m[8],st:m[9],pax:m[10],dep:m[11],arr:m[12]});
+    var m=l.match(/^(?:\d+\s+)?([A-Z0-9]{2})\s*(\d{1,4})\s+([A-Z])\s+(\d{1,2})([A-Z]{3})(\d{2})?\s+(?:\d\*?\s*)?([A-Z]{3})([A-Z]{3})\s+([A-Z]{2})(\d+)(?:\s+(\d{4})\s+(\d{4})(?:\s+(\d{1,2})([A-Z]{3}))?)?/);
+    if(m)segs.push({al:m[1],no:m[2],cls:m[3],d:m[4],mo:m[5],yr:m[6],from:m[7],to:m[8],st:m[9],pax:m[10],dep:m[11],arr:m[12],ad:m[13],am:m[14]});
     else if(/^(?:\d+\s+)?[A-Z0-9]{2}\s*\d{1,4}\s+[A-Z]\s/.test(l))bad.push(l);
   });
   return{segs:segs,bad:bad};
@@ -7263,6 +7357,7 @@ function parse(text){
 function nr(id){var c=$(id+"NR");return !!(c&&c.checked)}
 function render(){
   var r=parse($("pnr").value);["ref","ns"].forEach(function(i){$(i).disabled=nr(i)});var V2=document.body.classList.contains("v2");
+  if(V2){$("err").textContent=r.bad.length?T("bad")+r.bad.join(" | "):"";$("tk").innerHTML=invHtml();fitInv();return r.segs}
   $("err").textContent=r.bad.length?T("bad")+r.bad.join(" | "):"";
   var h='<header><div><h3>'+esc($("name").value)+'</h3><div class="sub">'+T("sub")+'</div></div></header><div class="tbody"><div>';
   if(!r.segs.length)h+='<p class="sub">'+T("empty")+'</p>';
@@ -7273,7 +7368,6 @@ function render(){
      +'</div></div>';
   });
   var rows=[["rPr","pr",1],["rRef","ref",1],["rChg","chg",1],["rNs","ns",1],["rBag","bag",0]].filter(function(x){return nr(x[1])||String($(x[1]).value).trim()!==""}).map(function(x){return '<tr><td>'+T(x[0])+'</td><td>'+(nr(x[1])?'<span class="nrv">NON-REFUNDABLE</span>':(x[2]?money($(x[1]).value):esc($(x[1]).value)))+'</td></tr>'});
-  if(V2)rows=rows.concat(v2rows());
   h+='</div>'+(rows.length?'<aside class="cond"><h2>'+T("cond")+'</h2><table>'+rows.join("")+'</table><div class="note">'+T("note")+'</div></aside>':'')+'</div>';
   var key=$("pnr").value,anim=r.segs.length>0&&key!==window._k;window._k=key;
   $("tk").innerHTML=h;drawArcs(anim);
@@ -7391,7 +7485,37 @@ function bkSave(){try{localStorage.setItem("bk",JSON.stringify(BK))}catch(e){}}
 function bkIcon(b){return b.l?'<img src="'+b.l+'" alt="">':"<i>"+esc(b.s)+"</i>"}
 function bkRender(){
   $("bkpick").innerHTML=BANKS.map(function(b,i){return'<button type="button" class="bkb" data-b="'+i+'" title="'+esc(b.n)+'">'+bkIcon(b)+"<span>"+esc(b.n)+"</span></button>"}).join("");
-  $("bklist").innerHTML=BK.map(function(e,i){var b=BANKS.filter(function(x){return x.n===e.b})[0]||{n:e.b,s:e.b.slice(0,2)};return'<div class="bkr"><span class="bkb">'+bkIcon(b)+"<span>"+esc(e.b)+'</span></span><input data-n="'+i+'" value="'+esc(e.n)+'" placeholder="'+T("accph")+'" autocomplete="off"><button type="button" class="alt x" data-x="'+i+'" aria-label="remove">\u00d7</button></div>'}).join("")}
+  $("bklist").innerHTML=BK.map(function(e,i){var b=BANKS.filter(function(x){return x.n===e.b})[0]||{n:e.b,s:e.b.slice(0,2)};return'<div class="bkr"><span class="bkb">'+bkIcon(b)+"<span>"+esc(e.b)+'</span></span><input data-n="'+i+'" value="'+esc(e.n)+'" placeholder="'+T("accph")+'" autocomplete="off"><button type="button" class="alt x" data-x="'+i+'" aria-label="remove">\u00d7</button><input data-s="'+i+'" value="'+esc(e.sw||"")+'" placeholder="SWIFT/BIC" autocomplete="off" style="flex-basis:100%"></div>'}).join("")}
+var INVLOGO="",INF=["of","ad","ag","ph","ce","em","bf"],MON3=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function saveInf(){try{var o={logo:INVLOGO};INF.forEach(function(i){o[i]=$(i).value});localStorage.setItem("inf",JSON.stringify(o))}catch(e){}}
+function loadInf(){try{var o=JSON.parse(localStorage.getItem("inf")||"{}");INF.forEach(function(i){if(o[i])$(i).value=o[i]});INVLOGO=o.logo||""}catch(e){}}
+function fd(d){return("0"+d.getDate()).slice(-2)+" "+MON3[d.getMonth()]+" "+d.getFullYear()}
+function cabin(c){return"FAP".indexOf(c)>=0?"First":"JCDZRI".indexOf(c)>=0?"Business":"Economy"}
+function amt(v){v=String(v).trim();var m=v.match(/^(\d[\d,]*(?:\.\d+)?)\s*([A-Za-z]{2,4})?$/),q=v.match(/^([A-Za-z]{2,4})\s*(\d[\d,]*(?:\.\d+)?)$/);if(m)return{n:Number(m[1].replace(/,/g,"")),c:(m[2]||"").toUpperCase()};if(q)return{n:Number(q[2].replace(/,/g,"")),c:q[1].toUpperCase()};return null}
+function nf(x){return x.toLocaleString("en-US",{maximumFractionDigits:2})}
+function dayDiff(s){if(!s.ad)return 0;var M="JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC",a=M.indexOf(s.mo)/3,b=M.indexOf(s.am)/3,y=s.yr?2000+ +s.yr:new Date().getFullYear(),d1=new Date(y,a,+s.d),d2=new Date(y,b,+s.ad);if(d2<d1)d2=new Date(y+1,b,+s.ad);return Math.round((d2-d1)/864e5)}
+function fitInv(){var w=$("tk").clientWidth,wr=document.querySelector(".invwrap");if(!wr||!w)return;var sc=Math.min(1,w/793.7),pg=wr.firstChild;wr.style.height=(1122.5*sc)+"px";pg.style.transformOrigin="0 0";pg.style.transform="scale("+sc+")";pg.style.marginLeft=Math.max(0,(w-793.7*sc)/2)+"px"}
+function invHtml(){
+  var S=parse($("pnr").value).segs,names=$("name").value.split(/[;\n]+/).map(function(x){return x.trim()}).filter(Boolean),N=Math.max(1,names.length);if(!names.length)names=["\u2014"];
+  var pr=$("pr").value.trim(),a=amt(pr),fare=a?nf(a.n):(pr||"\u2014"),tot=a?(a.c?nf(a.n*N)+" "+a.c:"$"+nf(a.n*N)):(pr||"\u2014");
+  var dl=$("tl").value?fd(new Date($("tl").value+"T00:00"))+($("tt").value?", "+$("tt").value:""):"\u2014",today=fd(new Date()),bf=$("bf").value.trim(),ag=$("ag").value.trim();
+  var fl=S.map(function(s){var dd=dayDiff(s),ok=["HK","DK","KK","TK","RR","OK","SS"].indexOf(s.st)>=0;
+    return"<tr><td><strong>"+("0"+s.d).slice(-2)+" "+s.mo.charAt(0)+s.mo.slice(1).toLowerCase()+"</strong></td><td><strong>"+esc(s.al+" "+s.no)+"</strong></td><td>"+cabin(s.cls)+" ("+esc(s.cls)+")</td><td>"+esc(cityOf(s.from))+" ("+s.from+")</td><td>"+esc(cityOf(s.to))+" ("+s.to+')</td><td><span class="badge-status"'+(ok?"":' style="background:#fef3c7;color:#92400e"')+">"+(ok?"OK":esc(s.st))+"</span></td><td>"+(s.dep?tm(s.dep):"\u2014")+"</td><td>"+(s.arr?tm(s.arr):"\u2014")+(dd>0?" <sup>+"+dd+"</sup>":"")+"</td></tr>"}).join("");
+  var h=Math.ceil(N/2),ord=[],i;for(i=0;i<h;i++){ord.push(i);if(h+i<N)ord.push(h+i)}
+  var px=ord.map(function(k){return'<div class="pax-row"><span class="pax-name">'+(k+1)+". "+esc(names[k])+'</span><span class="pax-fare">'+esc(fare)+"</span></div>"}).join("");
+  var terms=[["CANCEL / REFUND",nr("ref")?"NON-REFUNDABLE":($("ref").value.trim()?money($("ref").value):"")],["DATE CHANGE",$("chg").value.trim()?money($("chg").value):""],["NO-SHOW",nr("ns")?"NON-REFUNDABLE":($("ns").value.trim()?money($("ns").value):"")],["BAGGAGE",$("bag").value.trim()]].filter(function(x){return x[1]}).map(function(x){return"<li><strong>"+x[0]+":</strong> "+esc(x[1])+"</li>"}).join("")||"<li>\u2014</li>";
+  var bk=BK.map(function(e){return"<p><strong>Bank Name:</strong> "+esc(e.b)+'</p><p><strong>Account #:</strong> <span style="font-weight:700;color:#1d4ed8">'+esc(e.n)+"</span></p>"+(e.sw?"<p><strong>SWIFT/BIC:</strong> "+esc(e.sw)+"</p>":"")}).join('<hr class="bk-sep">');
+  var logo=INVLOGO?'<div class="logo-area" style="border:0;background:none;padding:0"><img src="'+INVLOGO+'" alt="" style="max-height:44px;max-width:220px"></div>':'<div class="logo-area"><span>\ud83d\udcf7 [ \u041b\u043e\u0433\u043e \u043e\u0440\u0443\u0443\u043b\u0430\u0445 \u0445\u044d\u0441\u044d\u0433 ]</span></div>';
+  function row(l,v){return v?'<tr><td class="label">'+l+'</td><td class="val">'+esc(v)+"</td></tr>":""}
+  return'<div class="invwrap"><div class="invpg"><section class="page"><div class="page-content"><div class="top-section-wrapper"><div class="watermark-bg">INVOICE</div><div class="header-container">'+logo+'<h1 class="doc-title">INVOICE</h1></div>'
+   +'<div class="info-grid"><div class="info-card"><div class="card-heading">Office</div><table class="info-table"><tbody>'+row("Office:",$("of").value.trim())+row("Address:",$("ad").value.trim())+row("TO:","PAX")+'</tbody></table></div><div class="info-card"><div class="card-heading">Agent</div><table class="info-table"><tbody>'+row("Agent:",ag)+row("Phone:",$("ph").value.trim())+row("Cell:",$("ce").value.trim())+row("E-mail:",$("em").value.trim())+"</tbody></table></div></div></div>"
+   +'<div><div class="section-header-flex"><div class="section-title">Flight Itinerary</div><div class="doc-meta">NO: <span>'+esc($("inv").value.trim()||"\u2014")+"</span> | Date: <span>"+today+'</span></div></div><table class="data-table"><thead><tr><th>Date</th><th>Flight</th><th>Class</th><th>From</th><th>To</th><th>Status</th><th>Dep.</th><th>Arr.</th></tr></thead><tbody>'+fl+"</tbody></table></div>"
+   +'<div class="summary-container"><div class="passenger-card"><div class="card-heading">Passenger(s) Details ('+N+' PAX)</div><div class="passenger-grid">'+px+'</div></div><div class="total-section-row"><div class="deadline-box-prominent"><div class="deadline-icon">\u23f0</div><div class="deadline-text-group"><span class="deadline-label">Ticketing Deadline</span><span class="deadline-value">'+esc(dl)+'</span></div></div><div class="total-box"><div class="total-label">Total Payment ('+N+' PAX)</div><div class="total-amount">'+esc(tot)+"</div></div></div></div>"
+   +'<div class="dual-columns"><div class="box-panel"><div class="box-panel-title">Terms &amp; Conditions</div><ul class="term-list">'+terms+'</ul></div><div class="box-panel"><div class="box-panel-title">Bank Payment Information</div><div class="bank-details">'+(bf?"<p><strong>Beneficiary:</strong> "+esc(bf)+"</p>":"")+(bk||"<p>\u2014</p>")+"</div></div></div>"
+   +'<div class="auth-section"><div class="sig-block-left"><div><strong>Accountant / Agent:</strong> '+esc(ag||"\u2014")+'</div></div><div class="sig-block-right"><div class="sig-line"></div><div class="sig-title">\u0413\u0430\u0440\u044b\u043d \u04af\u0441\u044d\u0433 / Signature</div></div></div>'
+   +'<div class="thank-you-bar">*** Thank You For Choosing '+esc(bf||"Us")+" ***</div></div>"
+   +'<footer class="page-footer"><span>'+esc(bf?bf+" - Official Invoice":"Official Invoice")+"</span><span>Page 1 of 1</span></footer></section></div></div>";
+}
 function v2rows(){var o=[],n=$("inv").value.trim(),tl=$("tl").value;
   if(tl)o.push("<tr><td>"+T("tl")+"</td><td>"+esc(tl)+"</td></tr>");if(n)o.push("<tr><td>"+T("inv")+"</td><td>"+esc(n)+"</td></tr>");
   if(n||tl||BK.length)o.push("<tr><td>"+T("dte")+"</td><td>"+new Date().toISOString().slice(0,10)+"</td></tr>");
@@ -7451,13 +7575,13 @@ function frame(p){
   else if(p<.7){var ph=Math.PI-2*Math.PI*sg(p,.30,.70),cp=Math.cos(G.ps),sp=Math.sin(G.ps),X=G.a*Math.cos(ph),Y=G.b*Math.sin(ph),vx=G.a*Math.sin(ph),vy=-G.b*Math.cos(ph);x=O.x+X*cp-Y*sp;y=O.y+X*sp+Y*cp;ang=Math.atan2(vx*sp+vy*cp,vx*cp-vy*sp)*180/Math.PI;sc=1.15+.3*Math.sin(ph);z=Math.sin(ph)>0?3:1}
   else{var q2=at(G.PB,1-Math.pow(1-sg(p,.70,.96),1.6));x=q2[0];y=q2[1];ang=q2[2]}
   op=p<.5?sg(p,.01,.04):1-sg(p,.96,.99);pl.style.opacity=op;pl.style.zIndex=z;pl.style.transform="translate("+(x-20)+"px,"+(y-20)+"px) rotate("+ang+"deg) scale("+sc+")";
-  var th=G.dir*360*ez(sg(p,.36,.64));$("lp").style.transform=(p>.36&&p<.64)?"perspective(1100px) rotateY("+th+"deg)":"";$("lpi").style.transform=Math.cos(th*Math.PI/180)<0?"scaleX(-1)":"";
+  var th=G.dir*180*ez(sg(p,.36,.64));$("lp").style.transform=(p>.36&&p<.64)?"perspective(1100px) rotateY("+th+"deg)":"";$("lpi").style.transform=(p>.36&&p<.64&&Math.cos(th*Math.PI/180)<0)?"scaleX(-1)":"";
   tx.textContent=p<.5?G.from:G.to;tx.style.opacity=1-op;tx.style.transform="translate("+(G.B.x-14)+"px,"+(G.B.y-9)+"px)";
   var w=G.cw,h=G.ch,cx=G.cx,cy=G.cy,m=ez(sg(pm,.14,.34)),gA=sg(pm,.28,.36);
   card.style.clipPath=pm>.12?poly(w,h,0,m):"";card.style.opacity=1-gA;
   gc.style.opacity=gA;if(gA>0){gc.style.left=(lp(cx,O.x,gA)-G.S/2)+"px";gc.style.top=(lp(cy,O.y,gA)-G.S/2)+"px";drawSphere(gc.getContext("2d"),G.S,G.lon,G.lat,p)}
 }
-function setMode(m){V2M=m;document.body.classList.toggle("v2",m);$("v1").classList.toggle("on",m);$("v1").textContent=m?"Home":"INV";if(m&&!$("inv").value)$("inv").value="INV-"+new Date().toISOString().slice(0,10).replace(/-/g,"")+"-001";render();fixSize()}
+function setMode(m){V2M=m;document.body.classList.toggle("v2",m);$("v1").classList.toggle("on",m);$("sw2").classList.toggle("on",m);$("sw2").setAttribute("aria-pressed",m);$("v1").textContent=m?"Home":"INV";if(m&&!$("inv").value)$("inv").value="INV-"+new Date().toISOString().slice(0,10).replace(/-/g,"")+"-001";render();fixSize()}
 function run(){
   if(raf)return;
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){setMode(!V2M);return}
@@ -7465,12 +7589,23 @@ function run(){
   (function st(n){var k=Math.min(1,(n-t0)/8000);P=k;if(!sw&&k>=.5){sw=true;setMode(!V2M);cacheCard()}frame(k);if(k<1)raf=requestAnimationFrame(st);else{raf=null;P=0;frame(0);$("fxf").innerHTML=""}})(t0);
 }
 function det(s){dbGet(s.from);var a=COORD[s.from],b=COORD[s.to];if(!a||!b)return"";var km=gcPts(a,b,2).km,hh=km/800+.6,h=Math.floor(hh),m=Math.round((hh-h)*60/5)*5;if(m===60){h++;m=0}return T("dist")+": ~"+Math.round(km).toLocaleString("en-US")+" km \u00b7 "+T("dur")+": ~"+h+"h "+("0"+m).slice(-2)+"m"}
+function quick(){
+  if(raf)return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){setMode(!V2M);return}
+  var dir=V2M?-1:1,t0=performance.now(),sw=false,lp_=$("lp"),li=$("lpi");raf=1;
+  (function st(n){var k=Math.min(1,(n-t0)/800),th=dir*180*ez(k);if(!sw&&k>=.5){sw=true;setMode(!V2M)}
+    lp_.style.transform=k<1?"perspective(1100px) rotateY("+th+"deg)":"";li.style.transform=(k<1&&Math.abs(th)>90)?"scaleX(-1)":"";
+    if(k<1)requestAnimationFrame(st);else{raf=null;fixSize()}})(t0);
+}
+$("sw2").onclick=quick;
 $("v1").onclick=run;
 $("pr2").onclick=function(){window.print()};
 $("vinv").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-b]"),x=e.target.closest&&e.target.closest("[data-x]");
-  if(b){var bk=BANKS[+b.getAttribute("data-b")];BK.push({b:bk.n,n:bk.a||""});bkSave();bkRender();render();var ins=$("bklist").querySelectorAll("input");if(ins.length)ins[ins.length-1].focus()}
+  if(b){var bk=BANKS[+b.getAttribute("data-b")];BK.push({b:bk.n,n:bk.a||""});bkSave();bkRender();render();var ins=$("bklist").querySelectorAll("input[data-n]");if(ins.length)ins[ins.length-1].focus()}
   else if(x){BK.splice(+x.getAttribute("data-x"),1);bkSave();bkRender();render()}});
-$("vinv").addEventListener("input",function(e){var n=e.target.getAttribute&&e.target.getAttribute("data-n");if(n!==null&&n!==undefined){BK[+n].n=e.target.value;bkSave();render()}});
+$("vinv").addEventListener("input",function(e){var t=e.target,n=t.getAttribute&&t.getAttribute("data-n"),w=t.getAttribute&&t.getAttribute("data-s");
+  if(n!==null&&n!==undefined)BK[+n].n=t.value;else if(w!==null&&w!==undefined)BK[+w].sw=t.value;bkSave();saveInf();render()});
+$("lg2").addEventListener("change",function(){var f=this.files&&this.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,360/im.width,120/im.height),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext("2d").drawImage(im,0,0,c.width,c.height);INVLOGO=c.toDataURL("image/png");saveInf();render()};im.src=rd.result};rd.readAsDataURL(f)});
 
 function lerp(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]}
 function split(c,t){var a=lerp(c[0],c[1],t),b=lerp(c[1],c[2],t),m=lerp(a,b,t);return[[c[0],a,m],[m,b,c[2]]]}
@@ -7516,8 +7651,8 @@ $("tg").onclick=function(){
 };
 var savedTheme=null;try{savedTheme=localStorage.getItem("theme")}catch(e){}
 setTheme(savedTheme||curTheme(),false);
-var I={mn:{title:"Нислэгийн мэдээлэл ба журам",h1:"✈️ Нислэгийн мэдээлэл ба журам",inputH:"Мэдээлэл оруулах",lName:"Зорчигчийн нэр",lPnr:"Amadeus PNR хуулах",lRef:"Тийз буцаах торгууль",lChg:"Өдөр солих торгууль",lNs:"Хоцролт / No-Show",lBag:"Ачаа тээш",lPr:"Үнийн мэдээлэл",rPr:"Үнийн мэдээлэл",cPr:"Үнийн мэдээлэл: ",phName:"Жишээ: BAT/BAYAR MR",copy:"✂️ Snip",copied:"Зураг хуулагдлаа ✓",busy:"…",tip:"Зургийг удаан дарж (эсвэл хулганы баруун товчоор) хуулах, хадгалах боломжтой.",dl:"Татах",x:"Хаах",tool:"Snipping Tool нээгдлээ",dist:"Зай",dur:"Хугацаа",tl:"Хасагдах хугацаа",accph:"Дансны дугаар",bkh:"Банкны лого дээр дарж данс нэмнэ",v2t:"Нэхэмжлэх",ag:"Агентлагийн нэр",inv:"Нэхэмжлэхийн дугаар",bk:"Банкны данс",bill:"Төлөгч",fls:"Нислэг",tot:"Нийт дүн",pay:"Төлбөр хийх данс",dte:"Огноо",noLoc:"Энэ нисэх буудлын байршил олдсонгүй",print:"Хэвлэх / PDF",sub:"Нислэгийн мэдээлэл ба журам",cond:"Тасалбарын нөхцөл",rRef:"Буцаалт хийх",rChg:"Өдөр солих",rNs:"Хоцролт (No-Show)",rBag:"Ачаа тээш",note:"Дээрх хураамж нь зөвхөн авиа компанийн үндсэн торгууль бөгөөд ангиллын зөрүү гарвал нэмэгдэж тооцогдоно. Цагийн хуваарь орон нутгийн цагаар байна.",empty:"PNR мөр оруулахад нислэгүүд энд гарна.",bad:"Танигдаагүй мөр: ",cRef:"Буцаалт: ",cChg:"Өдөр солих: ",cNs:"No-Show: ",cBag:"Ачаа тээш: ",bagDef:"23кг (1ш)",hint:"Мөнгөн тэмдэгтгүй тоо бол $ гэж үзнэ. Өөр валют бол код хамт бичнэ, жишээ нь 10000 KRW.",tgl:"Гэрэлтэй / харанхуй горим"},
-en:{title:"Flight information & rules",h1:"✈️ Flight information & rules",inputH:"Enter details",lName:"Passenger name",lPnr:"Paste Amadeus PNR",lRef:"Refund fee",lChg:"Date change fee",lNs:"No-Show fee",lBag:"Baggage",lPr:"Price information",rPr:"Price",cPr:"Price: ",phName:"Example: BAT/BAYAR MR",copy:"✂️ Snip",copied:"Image copied ✓",busy:"…",tip:"Press and hold (or right-click) the image to copy or save it.",dl:"Download",x:"Close",tool:"Snipping Tool opened",dist:"Distance",dur:"Duration",tl:"Time limit",accph:"Account number",bkh:"Click a bank logo to add an account",v2t:"Invoice",ag:"Agency name",inv:"Invoice no.",bk:"Bank accounts",bill:"Bill to",fls:"Flights",tot:"Total",pay:"Pay to",dte:"Date",noLoc:"Location not found for this airport",print:"Print / PDF",sub:"Flight information & rules",cond:"Ticket conditions",rRef:"Refund",rChg:"Date change",rNs:"No-Show",rBag:"Baggage",note:"The fees above are the airline's base penalties only; any fare-class difference is charged in addition. Times are local.",empty:"Flights will appear here once you enter a PNR.",bad:"Unrecognized line: ",cRef:"Refund: ",cChg:"Date change: ",cNs:"No-Show: ",cBag:"Baggage: ",bagDef:"23kg (1pc)",hint:"A plain number is treated as $. For another currency, add its code, e.g. 10000 KRW.",tgl:"Light / dark mode"}};
+var I={mn:{title:"Нислэгийн мэдээлэл ба журам",h1:"✈️ Нислэгийн мэдээлэл ба журам",inputH:"Мэдээлэл оруулах",lName:"Зорчигчийн нэр",lPnr:"Amadeus PNR хуулах",lRef:"Тийз буцаах торгууль",lChg:"Өдөр солих торгууль",lNs:"Хоцролт / No-Show",lBag:"Ачаа тээш",lPr:"Үнийн мэдээлэл",rPr:"Үнийн мэдээлэл",cPr:"Үнийн мэдээлэл: ",phName:"Жишээ: BAT/BAYAR MR",copy:"✂️ Snip",copied:"Зураг хуулагдлаа ✓",busy:"…",tip:"Зургийг удаан дарж (эсвэл хулганы баруун товчоор) хуулах, хадгалах боломжтой.",dl:"Татах",x:"Хаах",tool:"Snipping Tool нээгдлээ",dist:"Зай",dur:"Хугацаа",tl:"Хасагдах хугацаа",tt:"Цаг",logo:"Лого",of:"Оффис",ad:"Хаяг",agn:"Агент",ph:"Утас",ce:"Гар утас",em:"И-мэйл",bf:"Хүлээн авагч",accph:"Дансны дугаар",bkh:"Банкны лого дээр дарж данс нэмнэ",v2t:"Нэхэмжлэх",ag:"Агентлагийн нэр",inv:"Нэхэмжлэхийн дугаар",bk:"Банкны данс",bill:"Төлөгч",fls:"Нислэг",tot:"Нийт дүн",pay:"Төлбөр хийх данс",dte:"Огноо",noLoc:"Энэ нисэх буудлын байршил олдсонгүй",print:"Хэвлэх / PDF",sub:"Нислэгийн мэдээлэл ба журам",cond:"Тасалбарын нөхцөл",rRef:"Буцаалт хийх",rChg:"Өдөр солих",rNs:"Хоцролт (No-Show)",rBag:"Ачаа тээш",note:"Дээрх хураамж нь зөвхөн авиа компанийн үндсэн торгууль бөгөөд ангиллын зөрүү гарвал нэмэгдэж тооцогдоно. Цагийн хуваарь орон нутгийн цагаар байна.",empty:"PNR мөр оруулахад нислэгүүд энд гарна.",bad:"Танигдаагүй мөр: ",cRef:"Буцаалт: ",cChg:"Өдөр солих: ",cNs:"No-Show: ",cBag:"Ачаа тээш: ",bagDef:"23кг (1ш)",hint:"Мөнгөн тэмдэгтгүй тоо бол $ гэж үзнэ. Өөр валют бол код хамт бичнэ, жишээ нь 10000 KRW.",tgl:"Гэрэлтэй / харанхуй горим"},
+en:{title:"Flight information & rules",h1:"✈️ Flight information & rules",inputH:"Enter details",lName:"Passenger name",lPnr:"Paste Amadeus PNR",lRef:"Refund fee",lChg:"Date change fee",lNs:"No-Show fee",lBag:"Baggage",lPr:"Price information",rPr:"Price",cPr:"Price: ",phName:"Example: BAT/BAYAR MR",copy:"✂️ Snip",copied:"Image copied ✓",busy:"…",tip:"Press and hold (or right-click) the image to copy or save it.",dl:"Download",x:"Close",tool:"Snipping Tool opened",dist:"Distance",dur:"Duration",tl:"Time limit",tt:"Time",logo:"Logo",of:"Office",ad:"Address",agn:"Agent",ph:"Phone",ce:"Cell",em:"E-mail",bf:"Beneficiary",accph:"Account number",bkh:"Click a bank logo to add an account",v2t:"Invoice",ag:"Agency name",inv:"Invoice no.",bk:"Bank accounts",bill:"Bill to",fls:"Flights",tot:"Total",pay:"Pay to",dte:"Date",noLoc:"Location not found for this airport",print:"Print / PDF",sub:"Flight information & rules",cond:"Ticket conditions",rRef:"Refund",rChg:"Date change",rNs:"No-Show",rBag:"Baggage",note:"The fees above are the airline's base penalties only; any fare-class difference is charged in addition. Times are local.",empty:"Flights will appear here once you enter a PNR.",bad:"Unrecognized line: ",cRef:"Refund: ",cChg:"Date change: ",cNs:"No-Show: ",cBag:"Baggage: ",bagDef:"23kg (1pc)",hint:"A plain number is treated as $. For another currency, add its code, e.g. 10000 KRW.",tgl:"Light / dark mode"}};
 var LANG="mn";
 function T(k){return I[LANG][k]}
 function applyLang(l){
@@ -7534,7 +7669,7 @@ $("lg").onclick=function(){var l=LANG==="mn"?"en":"mn";
   if(pl.animate&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))pl.animate(xs.map(function(x,k){return{opacity:1,transform:"translate("+x+"px,"+(k===1?-3:4)+"px) scaleX("+s+")"}}),{duration:900,easing:"ease-in-out"});
   applyLang(l);try{localStorage.setItem("lang",l)}catch(e){}};
 var savedLang=null;try{savedLang=localStorage.getItem("lang")}catch(e){}
-if(savedLang==="en")applyLang("en");
+loadInf();if(savedLang==="en")applyLang("en");
 bkRender();render();fixSize();
 </script>
 </body>
